@@ -48,7 +48,7 @@ data "aws_iam_policy_document" "ecr_read_and_write_perms" {
   count = var.create ? 1 : 0
 
   # The previously created ecs_ecr_read_perms will be merged into this document.
-  source_json = data.aws_iam_policy_document.ecs_ecr_read_perms[0].json
+  source_policy_documents = [data.aws_iam_policy_document.ecs_ecr_read_perms[0].json]
 
   statement {
     sid = "ECRWrite"
